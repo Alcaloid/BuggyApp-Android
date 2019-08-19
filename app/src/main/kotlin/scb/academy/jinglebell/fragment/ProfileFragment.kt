@@ -41,8 +41,9 @@ class ProfileFragment : Fragment(){
             val txt_name = edit_field_name.text.toString()
             if (txt_name!=""){
                 val intent:Intent = Intent(activity,WelcomeActivity::class.java)
-                name = txt_name
-                startActivity(intent)
+                intent.putExtra("name",txt_name)
+//                name = txt_name
+                context!!.startActivity(intent)
             }
         }
     }
