@@ -25,8 +25,8 @@ import scb.academy.jinglebell.service.ApiManager
 
 class ProfileFragment : Fragment(){
 
-    public interface GetDataName{
-        fun getName(name: String)
+    companion object{
+        var name:String? =null
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(scb.academy.jinglebell.R.layout.fragment_profile, container, false)
@@ -38,11 +38,11 @@ class ProfileFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         btn_subit.setOnClickListener {
-            val txt_name = edit_field_name.text
-            if (txt_name!=null){
+            val txt_name = edit_field_name.text.toString()
+            if (txt_name!=""){
                 val intent:Intent = Intent(context,WelcomeActivity::class.java)
-//                intent.putExtra("name",txt_name)
-//                println(txt_name)
+                intent.putExtra("name",txt_name)
+                name = txt_name
                 startActivity(intent)
             }
         }

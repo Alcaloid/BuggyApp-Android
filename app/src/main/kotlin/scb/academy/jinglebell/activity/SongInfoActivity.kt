@@ -12,16 +12,22 @@ import scb.academy.jinglebell.model.Song
 import java.text.SimpleDateFormat
 import java.util.*
 
-class SongInfoActivity : AppCompatActivity() {
+class SongInfoActivity() : AppCompatActivity() {
 
+    lateinit var _song:Song
     companion object {
         private const val EXTRA_SONG = "song"
 
         private const val DATE_FORMAT_ISO_8601 = "YYYY-MM-dd'T'HH:mm:ss'Z'"
         private const val DATE_FORMAT_DATE_ONLY = "YYYY-MM-dd"
+        private var dataSong:Song? =null
 
-        fun startActivity(context: Context, song: Song? = null) =
+        fun startActivity(context: Context, song: Song? = null){
+            val intent:Intent = Intent(context, SongInfoActivity::class.java)
+            dataSong = song
             context.startActivity(Intent(context, SongInfoActivity::class.java))
+        }
+
     }
 
     private lateinit var ivSongArtWork: ImageView
@@ -35,7 +41,6 @@ class SongInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_song_info)
-
         ivSongArtWork = findViewById(R.id.iv_song_artwork)
         tvSongName = findViewById(R.id.tv_song_name)
         tvSongAlbum = findViewById(R.id.tv_song_album)
@@ -44,9 +49,9 @@ class SongInfoActivity : AppCompatActivity() {
         tvSongTrackPrice = findViewById(R.id.tv_track_price)
         tvSongCollectionPrice = findViewById(R.id.tv_collection_price)
 
-        val song = intent.getParcelableExtra<Song>(EXTRA_SONG) ?: return
-        showSongInformation(song)
-        println("ddd: "+song)
+//        val song = intent.getParcelableExtra<Song>(EXTRA_SONG) ?: return
+//        showSongInformation(song)
+        showSongInformation(dataSong!!)
     }
 
     private fun showSongInformation(song: Song) {
