@@ -13,9 +13,7 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
         val intent:Intent = Intent()
-//        val txt_name= intent.getStringExtra("name")
         val txt_name = ProfileFragment.name
-        println(ProfileFragment.name)
         txt_welcome.text = "Welcome\n${txt_name}"
 
     }
