@@ -24,10 +24,7 @@ import scb.academy.jinglebell.service.ApiManager
 
 
 class ProfileFragment : Fragment(){
-
-    companion object{
-        var name:String? =null
-    }
+    
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(scb.academy.jinglebell.R.layout.fragment_profile, container, false)
     }
