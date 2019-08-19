@@ -1,5 +1,6 @@
 package scb.academy.jinglebell.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import scb.academy.jinglebell.R
+import scb.academy.jinglebell.activity.SongInfoActivity
 import scb.academy.jinglebell.adapter.OnSongClickListener
 import scb.academy.jinglebell.adapter.SongAdapter
 import scb.academy.jinglebell.extension.showToast
@@ -24,6 +26,7 @@ class SongListFragment : Fragment(), OnSongClickListener {
 
     private lateinit var rvSongs: RecyclerView
     private lateinit var songAdapter: SongAdapter
+    private var mDataArray:ArrayList<Song> = arrayListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_song_list, container, false)
@@ -36,6 +39,10 @@ class SongListFragment : Fragment(), OnSongClickListener {
 
         override fun onResponse(call: Call<SongSearchResult>, response: Response<SongSearchResult>) {
             context?.showToast("Success")
+            if (response.body()!=null){
+                mDataArray.addAll(response.body()!!.results)
+                songAdapter.submitList(mDataArray)
+            }
         }
     }
 
@@ -56,6 +63,7 @@ class SongListFragment : Fragment(), OnSongClickListener {
     }
 
     override fun onSongClick(song: Song) {
-
+        println(song)
+        SongInfoActivity.startActivity(context!!,song)
     }
 }

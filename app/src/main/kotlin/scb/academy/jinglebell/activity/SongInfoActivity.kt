@@ -46,6 +46,7 @@ class SongInfoActivity : AppCompatActivity() {
 
         val song = intent.getParcelableExtra<Song>(EXTRA_SONG) ?: return
         showSongInformation(song)
+        println("ddd: "+song)
     }
 
     private fun showSongInformation(song: Song) {

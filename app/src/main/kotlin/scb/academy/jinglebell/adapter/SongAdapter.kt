@@ -63,4 +63,5 @@ class SongItemViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
 
 interface OnSongClickListener {
     fun onSongClick(song: Song)
+
 }
