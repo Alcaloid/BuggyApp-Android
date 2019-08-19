@@ -40,7 +40,7 @@ class ProfileFragment : Fragment(){
         btn_subit.setOnClickListener {
             val txt_name = edit_field_name.text.toString()
             if (txt_name!=""){
-                val intent:Intent = Intent(context,WelcomeActivity::class.java)
+                val intent:Intent = Intent(activity,WelcomeActivity::class.java)
                 intent.putExtra("name",txt_name)
                 name = txt_name
                 startActivity(intent)

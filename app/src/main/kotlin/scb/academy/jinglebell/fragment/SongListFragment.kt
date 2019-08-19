@@ -63,7 +63,6 @@ class SongListFragment : Fragment(), OnSongClickListener {
     }
 
     override fun onSongClick(song: Song) {
-        println(song)
         SongInfoActivity.startActivity(context!!,song)
     }
 }
